@@ -6,8 +6,8 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 
 class UserImpl(private val client: HttpClient) : UserApi {
-    override suspend fun getUser(page: String): UserResponse {
-        return client.get { url(GET_USER) }
+    override suspend fun getUser(user: String): UserResponse {
+        return client.get { url("${GET_USER}${user}") }
     }
     companion object {
         fun create(): UserApi {
